@@ -1,0 +1,30 @@
+ackage com.mycompany.anitamaxwynn;
+
+/**
+ *
+ * @author krist
+ */
+import java.util.ArrayList;
+import java.util.List;
+
+class Client extends User {
+    private List<Project> projects;
+
+    public Client(String username, String password) {
+        super(username, password);
+        projects = new ArrayList<>();
+    }
+
+    public void addProject(Project project) {
+        projects.add(project);
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    @Override
+    public String getUserType() {
+        return "Client";
+    }
+}
