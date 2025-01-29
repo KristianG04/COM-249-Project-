@@ -1,0 +1,38 @@
+package com.mycompany.anitamaxwynn;
+
+/**
+ *
+ * @author krist
+ */
+import java.util.ArrayList;
+import java.util.List;
+
+public class Employee extends User {
+    private List<Project> assignedProjects;
+
+    public Employee(String username, String password) {
+        super(username, password);
+        assignedProjects = new ArrayList<>();
+    }
+
+    public void addProject(Project project) {
+        assignedProjects.add(project);
+    }
+
+    public List<Project> getAssignedProjects() {
+        return assignedProjects;
+    }
+
+    public void updateTimeSpent(Project project, int hours) {
+        project.updateTimeSpent(hours);
+    }
+
+    public void assignProject(Project project) {
+        assignedProjects.add(project);
+    }
+
+    @Override
+    public String getUserType() {
+        return "Employee";
+    }
+}
