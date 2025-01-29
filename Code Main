@@ -1,0 +1,112 @@
+package com.mycompany.anitamaxwynn;
+
+
+/**
+ *
+ * @author krist
+ */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class AnitaMaxWynn {
+
+  
+ 
+   
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Project Management System!");
+
+        // Create admin
+        System.out.println("Enter admin username:");
+        String adminUsername = scanner.nextLine();
+        System.out.println("Enter admin password:");
+        String adminPassword = scanner.nextLine();
+        User admin = new User(adminUsername, adminPassword);
+
+        // Create employees
+        System.out.println("Enter employee 1 username:");
+        String emp1Username = scanner.nextLine();
+        System.out.println("Enter employee 1 password:");
+        String emp1Password = scanner.nextLine();
+        Employee employee1 = new Employee(emp1Username, emp1Password);
+
+        System.out.println("Enter employee 2 username:");
+        String emp2Username = scanner.nextLine();
+        System.out.println("Enter employee 2 password:");
+        String emp2Password = scanner.nextLine();
+        Employee employee2 = new Employee(emp2Username, emp2Password);
+
+        // Create client
+        System.out.println("Enter client username:");
+        String clientUsername = scanner.nextLine();
+        System.out.println("Enter client password:");
+        String clientPassword = scanner.nextLine();
+        User client = new User(clientUsername, clientPassword);
+
+        // Create projects
+        System.out.println("Enter project 1 name:");
+        String project1Name = scanner.nextLine();
+        System.out.println("Enter project 1 description:");
+        String project1Description = scanner.nextLine();
+        System.out.println("Enter project 1 start date:");
+        String project1StartDate = scanner.nextLine();
+        System.out.println("Enter project 1 budget:");
+        double project1Budget = scanner.nextDouble();
+        System.out.println("Enter project 1 deadline:");
+        String project1Deadline = scanner.next();
+        Project project1 = new Project(project1Name, project1Description, project1StartDate, project1Budget, project1Deadline);
+
+        System.out.println("Enter project 2 name:");
+        String project2Name = scanner.nextLine(); 
+        project2Name = scanner.nextLine(); // read the next line
+        System.out.println("Enter project 2 description:");
+        String project2Description = scanner.nextLine();
+        System.out.println("Enter project 2 start date:");
+        String project2StartDate = scanner.nextLine();
+        System.out.println("Enter project 2 budget:");
+        double project2Budget = scanner.nextDouble();
+        System.out.println("Enter project 2 deadline:");
+        String project2Deadline = scanner.next();
+        Project project2 = new Project(project2Name, project2Description, project2StartDate, project2Budget, project2Deadline);
+
+        
+        employee1.assignProject(project1);
+        employee2.assignProject(project2);
+
+       
+        System.out.println("Enter hours spent on project 1 by employee 1:");
+        int hoursProject1Emp1 = scanner.nextInt();
+        employee1.updateTimeSpent(project1, hoursProject1Emp1);
+
+        System.out.println("Enter hours spent on project 2 by employee 2:");
+        int hoursProject2Emp2 = scanner.nextInt();
+        employee2.updateTimeSpent(project2, hoursProject2Emp2);
+
+        scanner.close();
+
+        System.out.println("\n--- Project Report ---");
+        displayProjectDetails(project1);
+        displayProjectDetails(project2);
+    }
+
+    private static void displayProjectDetails(Project project) {
+        System.out.println("Project ID: " + project.getId());
+        System.out.println("Name: " + project.getName());
+        System.out.println("Description: " + project.getDescription());
+        System.out.println("Start Date: " + project.getStartDate());
+        System.out.println("Budget: $" + project.getBudget());
+        System.out.println("Deadline: " + project.getDeadline());
+        System.out.println("Time Spent: " + project.getTimeSpent() + " hours");
+
+        System.out.println("Assigned Employees:");
+        for (Map.Entry<Employee, Integer> entry : project.getAssignedEmployees().entrySet()) {
+            System.out.println("  " + entry.getKey().getUsername() + ": " + entry.getValue() + " hours");
+        }
+        System.out.println();
+    }
+}
