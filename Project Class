@@ -1,1 +1,95 @@
+package com.mycompany.anitamaxwynn;
 
+/**
+ *
+ * @author krist
+ */
+import java.util.HashMap;
+import java.util.Map;
+
+class Project {
+    private static int idCounter = 1;
+
+    private int id;
+    private String name;
+    private String description;
+    private String startDate;
+    private double budget;
+    private String deadline;
+    private int timeSpent;
+    private Map<Employee, Integer> assignedEmployees;
+
+    public Project(String name, String description, String startDate, double budget, String deadline) {
+        this.id = idCounter++;
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.budget = budget;
+        this.deadline = deadline;
+        this.timeSpent = 0;
+        this.assignedEmployees = new HashMap<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    public int getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(int timeSpent) {
+        this.timeSpent = timeSpent;
+    }
+
+    public Map<Employee, Integer> getAssignedEmployees() {
+        return assignedEmployees;
+    }
+
+    public void assignEmployee(Employee employee) {
+        assignedEmployees.put(employee, 0);
+    }
+
+    public void updateTimeSpent(int hours) {
+        timeSpent += hours;
+    }
+}
