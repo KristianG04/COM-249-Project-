@@ -1,0 +1,27 @@
+package com.mycompany.anitamaxwynn;
+
+/**
+ *
+ * @author krist
+ */
+import java.util.ArrayList;
+import java.util.List;
+
+class Admin extends User {
+    public Admin(String username, String password) {
+        super(username, password);
+    }
+
+    public void assignProject(Project project, Employee employee) {
+        employee.addProject(project);
+    }
+
+    public void createUser(String username, String password, String userType) {
+        // Implementation to create a new user
+    }
+
+    @Override
+    public String getUserType() {
+        return "Admin";
+    }
+}
